@@ -1,0 +1,22 @@
+#usda 1.0
+(
+   
+)
+
+def Xform "PatchA" (
+    references = @./ForestPatch.usda@</Patch>
+)
+{
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate" ]
+}
+
+def  Xform "PatchBB" (
+    references = @./ForestPatch.usda@</Patch>
+)
+{
+        double3 xformOp:translate = (2, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate" ]
+
+}
+

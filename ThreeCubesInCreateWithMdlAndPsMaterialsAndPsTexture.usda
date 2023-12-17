@@ -1,0 +1,529 @@
+#usda 1.0
+(
+    customLayerData = {
+        dictionary audioSettings = {
+            double dopplerLimit = 2
+            double dopplerScale = 1
+            double nonSpatialTimeScale = 1
+            double spatialTimeScale = 1
+            double speedOfSound = 340
+        }
+        dictionary cameraSettings = {
+            dictionary Front = {
+                double3 position = (0, 0, 50000)
+                double radius = 500
+            }
+            dictionary Perspective = {
+                double3 position = (627.3301673480415, 637.2008132857746, 600.9322625172977)
+                double3 target = (95.1248827653211, 97.6115632305366, -161.70602836990633)
+            }
+            dictionary Right = {
+                double3 position = (-50000, 0, 0)
+                double radius = 500
+            }
+            dictionary Top = {
+                double3 position = (0, 50000, 0)
+                double radius = 500
+            }
+            string boundCamera = "/OmniverseKit_Persp"
+        }
+        dictionary omni_layer = {
+            dictionary muteness = {
+            }
+        }
+        dictionary renderSettings = {
+            float3 "rtx:debugView:pixelDebug:textColor" = (0, 1e18, 0)
+            float3 "rtx:dynamicDiffuseGI:probeCounts" = (6, 6, 6)
+            float3 "rtx:dynamicDiffuseGI:probeGridOrigin" = (-210, -250, -10)
+            float3 "rtx:dynamicDiffuseGI:volumeSize" = (600, 440, 300)
+            float3 "rtx:fog:fogColor" = (0.75, 0.75, 0.75)
+            float3 "rtx:lightspeed:material:overrideAlbedo" = (0.5, 0.5, 0.5)
+            float3 "rtx:lightspeed:material:overrideEmissiveColor" = (0.5, 0.5, 0.5)
+            int "rtx:post:aa:op" = 1
+            float3 "rtx:post:backgroundZeroAlpha:backgroundDefaultColor" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gain" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorcorr:offset" = (0, 0, 0)
+            float3 "rtx:post:colorcorr:saturation" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:blackpoint" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:contrast" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gain" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:gamma" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:lift" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:multiply" = (1, 1, 1)
+            float3 "rtx:post:colorgrad:offset" = (0, 0, 0)
+            float3 "rtx:post:colorgrad:whitepoint" = (1, 1, 1)
+            float3 "rtx:post:lensDistortion:lensFocalLengthArray" = (10, 30, 50)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffX" = (450, 475, 500)
+            float3 "rtx:post:lensFlares:anisoFlareFalloffY" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:cutoffPoint" = (2, 2, 2)
+            float3 "rtx:post:lensFlares:haloFlareFalloff" = (10, 10, 10)
+            float3 "rtx:post:lensFlares:haloFlareRadius" = (75, 75, 75)
+            float3 "rtx:post:lensFlares:isotropicFlareFalloff" = (50, 50, 50)
+            float3 "rtx:post:tonemap:whitepoint" = (1, 1, 1)
+            float3 "rtx:raytracing:inscattering:singleScatteringAlbedo" = (0.9, 0.9, 0.9)
+            float3 "rtx:raytracing:inscattering:transmittanceColor" = (0.5, 0.5, 0.5)
+            float3 "rtx:sceneDb:ambientLightColor" = (0.1, 0.1, 0.1)
+        }
+    }
+    defaultPrim = "World"
+    endTimeCode = 0
+    metersPerUnit = 0.01
+    startTimeCode = 0
+    timeCodesPerSecond = 24
+    upAxis = "Y"
+)
+
+def Xform "World"
+{
+    def Scope "Looks"
+    {
+        def Material "Aluminum_Anodized_Blue"
+        {
+            token outputs:mdl:displacement.connect = </World/Looks/Aluminum_Anodized_Blue/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/Aluminum_Anodized_Blue/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/Aluminum_Anodized_Blue/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @http://omniverse-content-production.s3-us-west-2.amazonaws.com/Materials/Base/Metals/Aluminum_Anodized_Blue.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "Aluminum_Anodized_Blue"
+                token outputs:out
+            }
+        }
+
+        def Material "Aluminum_Anodized_Red"
+        {
+            token outputs:mdl:displacement.connect = </World/Looks/Aluminum_Anodized_Red/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/Aluminum_Anodized_Red/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/Aluminum_Anodized_Red/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @http://omniverse-content-production.s3-us-west-2.amazonaws.com/Materials/Base/Metals/Aluminum_Anodized_Red.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "Aluminum_Anodized_Red"
+                token outputs:out
+            }
+        }
+
+        def Material "GreenPSmaterial"
+        {
+            token outputs:surface.connect = </World/Looks/GreenPSmaterial/Shader.outputs:surface>
+
+            def Shader "Shader"
+            {
+                reorder properties = ["inputs:diffuseColor", "inputs:emissiveColor", "inputs:useSpecularWorkflow", "inputs:specularColor", "inputs:metallic", "inputs:roughness", "inputs:clearcoat", "inputs:clearcoatRoughness", "inputs:opacity", "inputs:opacityThreshold", "inputs:ior", "inputs:normal", "inputs:displacement", "inputs:occlusion", "outputs:surface", "outputs:displacement"]
+                uniform token info:id = "UsdPreviewSurface"
+                float inputs:clearcoat = 0
+                float inputs:clearcoatRoughness = 0.01
+                color3f inputs:diffuseColor = (0, 2, 0)
+                float inputs:displacement = 0
+                color3f inputs:emissiveColor = (0, 0, 0)
+                float inputs:ior = 1.5
+                float inputs:metallic = 0
+                normal3f inputs:normal = (0, 0, 1)
+                float inputs:occlusion = 1
+                float inputs:opacity = 1
+                float inputs:opacityThreshold = 0
+                float inputs:roughness = 0.5 (
+                    customData = {
+                        dictionary range = {
+                            double max = 1
+                            double min = 0
+                        }
+                    }
+                )
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 0 (
+                    customData = {
+                        dictionary range = {
+                            int max = 1
+                            int min = 0
+                        }
+                    }
+                )
+                token outputs:displacement
+                token outputs:surface
+            }
+        }
+
+        def Material "PreviewSurfaceTexture"
+        {
+            token outputs:surface.connect = </World/Looks/PreviewSurfaceTexture/PreviewSurfaceTexture.outputs:surface>
+
+            def Shader "PreviewSurfaceTexture"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                float inputs:clearcoat = 0
+                float inputs:clearcoatRoughness = 0
+                color3f inputs:diffuseColor.connect = </World/Looks/PreviewSurfaceTexture/diffuseColorTex.outputs:rgb>
+                float inputs:displacement = 0
+                color3f inputs:emissiveColor = (0, 0, 0)
+                float inputs:ior = 1.5
+                color3f inputs:metallic.connect = </World/Looks/PreviewSurfaceTexture/metallicTex.outputs:rgb>
+                normal3f inputs:normal.connect = </World/Looks/PreviewSurfaceTexture/normalTex.outputs:rgb>
+                float inputs:occlusion = 1
+                float inputs:opacity = 1
+                float inputs:opacityThreshold = 0
+                color3f inputs:roughness.connect = </World/Looks/PreviewSurfaceTexture/roughnessTex.outputs:rgb>
+                color3f inputs:specularColor = (0, 0, 0)
+                int inputs:useSpecularWorkflow = 0
+                token outputs:surface
+            }
+
+            def Shader "diffuseColorTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (0, 0, 0, 0)
+                float4 inputs:fallback = (1, 0, 0, 1)
+                asset inputs:file = @./rgb_color_wheel.png@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sdrMetadata = "texture"
+                token inputs:sourceColorSpace = "auto" (
+                    allowedTokens = ["auto", "raw", "sRGB"]
+                )
+                token inputs:wrapS = "useMetadata" (
+                    allowedTokens = ["black", "clamp", "repeat", "mirror", "useMetadata"]
+                )
+                token inputs:wrapT = "useMetadata" (
+                    allowedTokens = ["black", "clamp", "repeat", "mirror", "useMetadata"]
+                )
+                color3f outputs:rgb
+            }
+
+            def Shader "metallicTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (0, 0, 0, 0)
+                float4 inputs:fallback = (0, 0, 0, 1)
+                asset inputs:file = @@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sdrMetadata = "texture"
+                token inputs:sourceColorSpace = "auto" (
+                    allowedTokens = ["auto", "raw", "sRGB"]
+                )
+                token inputs:wrapS = "useMetadata" (
+                    allowedTokens = ["black", "clamp", "repeat", "mirror", "useMetadata"]
+                )
+                token inputs:wrapT = "useMetadata" (
+                    allowedTokens = ["black", "clamp", "repeat", "mirror", "useMetadata"]
+                )
+                color3f outputs:rgb
+            }
+
+            def Shader "roughnessTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (0, 0, 0, 0)
+                float4 inputs:fallback = (0, 0, 0, 1)
+                asset inputs:file = @@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sdrMetadata = "texture"
+                token inputs:sourceColorSpace = "auto" (
+                    allowedTokens = ["auto", "raw", "sRGB"]
+                )
+                token inputs:wrapS = "useMetadata" (
+                    allowedTokens = ["black", "clamp", "repeat", "mirror", "useMetadata"]
+                )
+                token inputs:wrapT = "useMetadata" (
+                    allowedTokens = ["black", "clamp", "repeat", "mirror", "useMetadata"]
+                )
+                color3f outputs:rgb
+            }
+
+            def Shader "normalTex"
+            {
+                uniform token info:id = "UsdUVTexture"
+                float4 inputs:bias = (0, 0, 0, 0)
+                float4 inputs:fallback = (0, 0, 0, 1)
+                asset inputs:file = @@
+                float4 inputs:scale = (1, 1, 1, 1)
+                token inputs:sdrMetadata = "texture"
+                token inputs:sourceColorSpace = "raw" (
+                    allowedTokens = ["auto", "raw", "sRGB"]
+                )
+                token inputs:wrapS = "useMetadata" (
+                    allowedTokens = ["black", "clamp", "repeat", "mirror", "useMetadata"]
+                )
+                token inputs:wrapT = "useMetadata" (
+                    allowedTokens = ["black", "clamp", "repeat", "mirror", "useMetadata"]
+                )
+                color3f outputs:rgb
+            }
+        }
+
+        def Material "OmniSurface"
+        {
+            custom string omni:baked_preview = "z!!*'\"!!*'\"Gb\"/LflA&mQ=YM29(`RTZJJe\"WN<!s-CONXV:A(YFjIG&[IqbrN3uAq+W3RDikC=MAq*sjT8UYh2uj22$$VH?&'$(%K+[&`39RHSq!Pc_(>gh`$jM@#?n`E+#(sa\"0Gk3&K>CqL(^pV$_-er6$jM@#?n`E+#(sa\"0Gk3&K>CqL(^pV$_-er6$jM@#?nenUo]aiD%mTurGl@L3@V]b[^uf*I;rH3,<uN\"s)^Sh)>eDntZ11`lma\\?IrAU48YOlVh[IG;_0>-Jpf?I^))o0'%04$3<,e(VASXo/eamno\\lLJt8EH/6C5<E)>SXhCYcd)uhao@:>c;%.OVhC8Ql,h',U]CAj<;_cJF!gm@rjI%\\rE/UYbMkZ[:6+R%KiSJ-GlIX:ilRB3KARaT@oX*\"qJj>onF6SXQ9T;+D\\q<F4Y@ctJVV4^K>cBFMm%g2`Rk\"a`BE0tEIW2A\\2-C2aktQgMnd*c5!44hf>27^[IG;_0;/bO*t$j!r;#qnH^cmD_.WnporT^q0/\"sc]7*L[,HfqZ#`aPh\"^d,(\"Xe3p2tZtd_Y)pNqKd.`E@#RH[CFYpUn?6GoGmCFo_/LYRe5=QHf2SjAk8I@oE!8m2$&.3CBB,#L>k=?na!BnOq1o?rN,(+_(Y<E??,p=n=2HJ?:u?W2ojeh/hVs4!p9V_5BL.<U&;TQre5S;!kka]&&]?15A5bt$)n;(RW,Xd.5V'O^fnNU7psS+J+cQT^5/W%05q7<Jr^A5)a66/EjG\"gkLYI5Q<Yedb;eG(N:UV^?cMt4gokZ@EU'9GI[Lj/[9m/$#c(3D9t6AcKCftQ<O`N;'@^ZLIfLQ\\Bu/8rX9FR5\"EFG:1Wli;-O0%T(W#nPik(5kDj>_eS@<b2k4B?hAM+L>U2aGtfYWt7^'K,^nsP#XQ`m05-[q-Vj1V*)67^?gmrGCM_:/U]#DcZ=(7YW:JEmT%BqrQ@Jg9HA_m&=.M;UI8?2F)&HnKe`nD<08@Cm93Nt#E]gar9e`TJ^7'93hu7u*#?_h5qE!ALF$*uuC8`8gI._0itacY)A.O,iFBl*Za.'V>c*';&Rl.EU2P&oe#V)gTM&$SLZ\"i9tl5G,Y,U>/6L<YZA#@@E1^)^NVZ@GckOpA`oo)9g&1'DNj+L^Oj@#*;Mn50/sJKch@)Lqtk_urOkAj3LfD?O6u?%0(sI4kpQIkhpHKPb\\&`[#O'2OF@0bpoHU#=j<IocH6P0V0ofTK^5s*m/)hl#'emW7`I#Pqi2+SmL$ZJ3]ZG48Dd2o1A'<c<\\R+ChOiCfj9\\WnC(0h'IGBZ8'G!ARVhn/G6q=pj`+#W]^oQ*62D'8f0Qb$#g$[Al$j<l?=3$CFMS:c.jrneSs!1s9QK\"N8m!+S\\VH&qV,h\\J=E%PMAUD9eJ1[psQuQhPI4_XYMt%Vp&,@+]q\\G*h5(I&u>f`t&==EC1u?\\u!.qU\\DZQj-hCBJ9[ct0=Xg=(Ec2W^Sh\"GL\"(ZjecEe+5d\";[IYV_pjmia_ocS*7lk[S124R`QfCiLji[*Jl>d&+V.1Tn$&,SRAm=0rT1%*Z0WsLQ$_#*/<E%c0kE8PUFOUHl7$6;*=*FK9WOjauVLC^G107<\\%>,PG'12!5qH0rqiHr&_t6$oP8TAi(O[,ujmrD2!r%hamLO<,+i\"9/@nL\\q5=G<D]]!5=]EJLe=H\\:3!07c+LArZT((jQt($>R'@1E;dT5DbJ:hrsO1T@K7K6e\\q`b'(k*L!71g]Jb0=<N,V>^%eirA#.X-3kO9(&+'8ab?,MWi_,X@=(\\,3'kC`Nl#4Ka*]of4rZ1E6gDpS(fs,j3(ri7#g!+mk1QiHYl77[qU3q1Pd#mstT4i)P/3>\"8=O`)[ki.,s#d1NU32IF-11$I/Q2nl2[?@_dmf%5!B0Z`u>Y0SEJBRm2M>P1/fFraE2!]A-@Xl#7IlrIm,XqoO^\"<ppO:HF2VM#3,J9D)3A-b_8/>Gr?#B,tAj6KRo;GD<;XF]IOO);fdd?a99AXmOJNkA0lWmiUIP@2=Ckh/#!u21HF-hg9YSC`gKg#Fb\\](EX!_s4]_gL^e=\\Tu!ai)LAOZ)k\\\"\"21UejX:qZOn/Aa+nkJk-hOgeB?M!%:j4A?9b53LS4fe`3l@*+?4B\"0?]gTJUc,&QVI#qO)oK`3T.Q0PnKj5f!!7L2mqh%,;c+X0&K$re\";ges,5'$M(-)`i7If?=uhB1;>hVro=)t2fm*=\"Yn(O63`'0JI1<I6R1^nUor*C*kKIRa5O2;!!D\"W1PoRh'CD;JoXeQpa]aS>h_=k=9b=p$]5t4u9DG/SN-#^pUd<_JEiKJCc0)l+k>;#Ol#lmL&sNamTn3^qKdNY\\_&/CQEmgYl/=oSXP%.f(&%cq^gSOg%\\\\sHI@==pg:4U^,Wsq7tqeHYsH_Y./jFSM-M/[*&3u1F0XVaI=_&[e`L4Q)kki=C%J<Qn'1%9Gou\\MHf9BT#=d\\HB>b#[`q?r)@/:!Ji=d%g6Ge)K\",/q3k()'6?AlH]q*!cM-XYg-Zc,koJ[L$.k>Q9U[J@CoIob;$8oChepN8C/GL#rY!R'Q=cQ@u<\"POqOI=_+oGRQb<C52MT:=p@b>>RJ4F&VKg2/L!h,80gcZ=hM+m5]T@nU,eSc0p_f*GWAf\\/t'.Y26?[$S3<[q#OP!PV972^;/Oi$c(B3SAHXL^)q`n1A]rn1`j<MHl\\@(QT\"k1g3b][+7f)?F8EF*^JE^1TE1$^r-nEZqZUQ7P3Q,Op]Bn/^4;`eVXcl_;?OZ5Si'o@+Lo00H?jDHIT\"YpZYf[XO3Om&ouC_:Qd,R(4j)W.=ne?6Fih3\\0ICaeJ`:rY\"/JYA*s`f.EWS@IBGCO86drmC)reU$pJK7<Zg7#6IMq<MpZ/^Mh&1tE%5jddqje;U#Q9G-c_p5K9h\\sk!l\\[54i6*WGqCjg7)jd[$]#NX00!5cm]5#FGB3_nb44_B^=o2lq#'ArIae4D\"9,kp\\>/&uCVLPX?h[k9EYXkpJ=9sllNCgJ5h-/1I-<`\\0p]KSL^C;'3%m6c+HN;-Ir045p[XP,^Tp@*c,+85q`_M3lG7D4!WD*X1?8B=r6ElEI5/o1l%#0D/GC$3')b/L8+>UJXVj\"*#rY-2\"^(r)J?lnu9fE\")[JPjYL:qg.p.N\">idLeIS^o[48anqX[2a)Aj6Z&]NX:Zt,Le)KbT4OoO18#W\\UaI:2.6>YofY>lbErl=Z29FU\\nAdHj3P102/Bg&mOp'p(l8'3q\\tu;J\\$n[SKLlZ`:o8!K!g4l+ac_KOo0lJ\"/COLmif_Yf(X&N+0WS12nr_EnTQ[*UJKXZ_YgUpk>8jPe8'*j\"Jc(>#o)0Es8G5/KFYdn^upC<=*#>n$fJ+.Xq-O#-25`VqVIK$5JuR]B-YE7d^*:BUEd@IRK%R1cb$&2*@PP?,8O*>^jAER9FZO>Vt8Js[=i\\po&W*?#)i];_ddapp@.DH\\tZndHMKbZgi'JgYE&XjCV!7,mcZs[*'gV11urgXStn11a0d%g!AYGCPo?=nJ.E\\1_!<+5XNj]Y)SiVncp4`Enc%Y3V4J?MA(:7uo\\LTgf5kI\"I.$n-^I7L6Jj0\"fe_[2VmT90E<@je#^rZhoQQQb4,jGJ66g@?UWXD&o3%$[&OQWNds/q1Palc`R4fYr?>gNA5GoVr(?Iu6pr#_+%eSD>+!QM3>ZSl4e!UiI\\!&O]Akt7Ou%c<H8!lG$.(M\\?EiihpCW%4537\\9&sP2\"<cjU^M\"p</6Zir=i7+7mU$f1Wj_\\G\\`T0DM6b$&F$R&IVu`M)/>G2E1h-?f+Ldrpu,@qg'%;IReH>;N[QkNiuO]oqoV+#R9C?otFW(f%`W#oEq!)@+>E[ImC:$\\5.(3gu\"d[Si@fec?e$r\\)[F3XPZ20_q]19VT6RRNm8VHMIs</If)s5Iq38DV`&dG,(#!]N)A:^^jCf^jo2<?%=.rr[HR\"O)W/(h-eme_OZ1k;oh2pYJ%c-Zl2O72?kiNGSfcm*!7!?=HN`t)i^*`8O3f>pScF.5jJ7OmaXTXGhl#-ZWi+IImoqZ`)#*p4q0Dl[6S:'JruIc_rTj2A<3Fp(J6fc_aIFPAI=fGlK&<R$$Z0h^_S#sjKBdh@]Alf@pt_NJ?[]\\Tq]58lSbpW\\ms>3+A,l9HVucemQ(25^!tNHQ<:_<E8$H4cD\\[8W3p5m:fD3o;?@Q<hPl!%Xh4FL2CI$VHFK,A@YJ52YH[Ghb4.R[2^tp^>RTPV#(8\\\\GS.BEF`)E\"%j1h?LSSCWH\\'F0fpbKCPcenGG5;`D(oP^/qf=#nVpF*I&4F78r<+h%1m_i;*oi_%kQoW,(clBQ>3-Q1I+6W%BfD5!Ihi+ae@Uuos5lMiVrOrCk^s*)e1]VqkW]pbLBuHpj6/`gCTm8I`PeFa[hcH01YP.[skC,IQVP+)$\\DJ&$6Q2')s5e!*kjrLQ^_[C\"5%-SBeB/#6ZObC_04$'As0h:[[rVG]3aWg\"IJij>5*&M\"eq*[5mZm[K)A(H_!ITDi>[m.B1c7P[!YC-e)=rY_3=a,_mIrhAcG/`5Xj?a\\p>`!PrVZ=H7P+n\\hU67j>oXFR%S!;rL*'7[*Ah@8(B6nMOEuQfRg$FsRH&g.fREj[W:O5BIluVT_YnrY^FUD(j$VPX%EAEC1n\\b-W4rjfT%H.\"akA\\PC4`H,!<3dLQfETQOPbO:oDN:'Y>XPeanGtj;;h?=K_tH?oBFUWocf0<]l8H6IXpTfGs4Id%T`.O+,jH4@Aba>?9p;=R,`]6.Xljuhs]gu9B3`OI%@ZP4)ML:(AuM*JE?Y.JU?MO!VU@Pi'Z0>N9?H&KX`'7K/q,mn+T?Cr=Qe/cVNtHmBkkY:HC3[mWYB+_tsEj6c@Y.ABb]TJ+2,?or_S>4Wk$Zn$hHS<+bkbq>Q3-^RTFEci62=T;r\"GYIuLdO&c?\\I=SlC-:i,Afb\\b(qLU[:W$(6sLO/m`r;L-7^O6%$1naAS/sH1-eUTLUgMqaL'?![[!n@C5O(l?If)oj=kPM+5+6`6Qqu+_#r\\477kk]^^i.%I*/2%eN\\Yl,\\@,F.T`\"rYd2EfXo9\"]E=,+S*4mcgkBo,3Sg[K\\:8qjh4Frf9YR,2]*eREPDe3Yrq1JTSmCI\"4NoTFL*d5n=q\"!Edt?\"+3VI+0j4gcgO)Yqu)EP4rn&109cD@&TlA!r\\Yh7Ig]q?[7A$ZJ6eTa3$Wng2@fEiZNA_2#Jda^IJ]?.U&#hfN&.tJXbACYdX#rkSVs(e?K10*+>J=$5-qO\\<^'?N1FUQf[!RGY#JdaJ5\"Y?n?LT$tC%_8tcJ]8XoO@eQM>r%M\\(6,]r9reFbOknC\"unJ+*=#+Wi08V>)sRr==!,5brJ:?)mr-MA%.s?!mJhPZr*L8t5A]rW2'Ck*`D63coXi>GVg*Rh4RS12/0EeZXaL2mp>=_-cKD(;?RY?GiVl-gpYGZsXd8n2[!?0@Ih)5%[%Z1OaO>]>I;#MZG`B!Mi8t(&NXr@#[=Cm)O7W4N0(#+\"me-+BaW%8YASHSYZSYnW^YsJ\\T)\\Vp5>;6Kh32aOT<`>9hlSOR1ACYG<\"%?B[=H-N@GRQWR1CEV^Z^U,oD:[`FQ^sAanGBg3DZ\";5;`E;o)Y:oJDUV,W+1AKr.%`\"gV-F(6;$!^+mT$O*++,+?fSiu)-dWAX5-A]eq=\"YF2-OIp>tgo(B/b-5(K%/KKfHB^`$Rh4Fja92qmseID3;TBBK.'')R*'i.&0>1l20ek59c-YH8+AI.k,@ZTmkJ1n`hQM:]0/#CJ(N!;o\"2r!f2=[/,%J>h_?hp<-c,oDFWGo/nDDs06!hr(j=!2S>(Lq-U$#jgFpLJVXPEDKrG+;=d+M+LGOAI/mO,WU,,GX.7r-Z2K[Eq(i!IkC;)%;\"J!F1a$'3Rd`O1!s3`J[5VbOH3./2%tJHLg\"@Nq0BW',k5+jhIu!qtjZE'`4T'-6rI/U56j#R'@%AV+XT_sm4iDYR73;NmGc7q]odk$bm6@W)rjM`Cb'W:NnGM_t5LMdrB+Z4n*fL,!*WYp80sI#[GX6LnQ-Ku][:\"La[5u@G3lC.!hWL[-q&MKo^:q!Qa+)3<BWm9lpi!@:_7A>Os6#U(s)RJ@7g!#q7q)I<DMXen;#&#f_()!#/GAjFlIeA\"qhoNBh76j0gu!_``-]W)rI)9OR*gG6$Q\\H_p.q\"S)&b3K)Sj_t%r/o8*s8I5i$5cc#^LFf`*(\\Zo<p/cD/Bmb^O:GS+\"*TQX7Q:2q(I$.B;#&\"bg6CQIrkUuN<-nC#+*I3Y..g\\#6\\N:@p]dp@rPpj7IkuurVtTepM\\7TR67qnI##Ec<-08F$T-B5p#1CA+/\")/E&[]UCI$M,O2h9d(r45qJchqR_E\\%4+u'(Fs!u\"]YO:pF:@e@iq!ZjaPQ-pY=;p,f\"do>'oA?GHUZI!r\\d7*;H$E]S0$OY`U`/1i$H3#7rR'Yln,#',^Xr2J<]+:2isTtjql^e8_t!QTq;44,RqP&0\"u,Y!FEZl\\4?IX\"@K<%hn\"/QPqYomX?XruH)Gp)1f%Th1nio&D:n8%R7/Yr*qaig[i;_T]%rBbs`;/A,:@OKXJ2H.J'`5At^F/F[ESo=Ik.dPg3QU0.+stG3J-O6rGsHdYJ=I(S$?Z@-qd4'p5CB&`&c5)\\r5Ig:<.+^2g`P_Z?:4^qORM(h\"q34\"FQqS!i<+c,\"_4*%0@7Y`$]=i\\`gIm>fY90@'CpT,r\\sHKrTgQ,>!7]>r?1sb8csHEd-rnr>XL%@\\*ah7grm7C(VlOQXNh;?RV3*@o)6fN+/.?%)?1qqIrDb[S6p$RJ\"Hq(_RJ_s$^T!9V:bdG#))g@N<,+C.+U%f,&62k-Ss9i+NsM?`VrU,^D,G[%I`?C[6&f)Zj$rTs%[mY_tPbt\"(49$r?DN^I#P&m$%up,hNRDXH_\\nPYKlr'o#1OPpb.$p4T:h\\s4\"X*OLuZ?#FPO^n/m_ec3^-]iPk-1IXo:I?;E6Z5j\\O=h)hmn=3^Q^o)5W\"rttdj`;Y%-s8G%B^@%r05ElAR!rq*R2G]eSNYhcOfpkkInA>c$=D)oKqgIbpI`Z7#=St+*rs\\n]FoOS\\pVEoXg\\se95D/j(nNZ\"8bl'O%aofdI^cCcg^8!a)X,W+TH(Bg7J,GF<QiHpB%l*C&pg5i?VoJJ7j1fI.lhR1(o<V]Y9u?p;[K^hs5C;I?.fZ(:B''*KZNB[P1[5.6hFrIOY@#bKO$CF0AcL$-hcKPf_uGV]O7V8_\"6ASC0Kbg5pQqi[S__J_p`K21n2T\"dDC#PWO^:u4aXt\"*hOp`(1q-D6gcmduqsV99rr4##0iE=HZh^f=>DN55s51<cD[bEn,ldbmJPP[q8GI,Y0?*r`%e-6l\"+hoQ4+jlE_&r/]BPuG\\:Oi5iibs>D)s.\"@4[58WpQsA#S'6@Dn*a`3o2sZ=&'M/uo\"P\\Ekk&1nE5*e\"qg8B.s5,mo5qZ[i^r7Sq!0I)1cgpSuX0LQsB%Bb0n*f:daS+6&C\\u/gX%@(lQT?f7s-mslZ#8pb-Qi@QJH)2\\+DU'Y'?C3gf)'m1M)2gYp\\SRoIpUk.VYp2Ark\\Cd7F$+R\"hia0Tt)9(^KCZ'r!2_@4O6,7ChIC-oJo1d.:MZeMO:7,qe=FKgDBnaID5^e\\.[c8qn&Od?`2V^P^Bnk^H_F`rpS/\"!AO>1^Jd-XjO4]&O$*`(3[O.kf>@Q3BDeC/M#B^=\\,:^h)8?./>Zb!d%t\"nSbCB9\"e+c^%!;gpMJEB)H!06.^\\d.L,hV-a)SDtcK^-?VO=7Vm=L9\\M\\\"-e7bd\";5#(0#\\]iR]Ph\"T33*qq(Aq^XhoL51KWtd0p$\"s,V1A#\\j>Qfa@r?\"E=cp(4(u=h>3c7\"(oi[J\"IKUqL+**X,ObM?p+@j`cJIY&&8EQ!t])IM7MR=a8m(MJ'9pgc,)EU^;\\.58,q8V.C6a/pjZ]/8,'VPFhkkMIK.U>@r?-5=>'VdMgD!?KE!%C9[ElW0Ar4=JFH8c/nFB'CX..Zp.+rI=khO+GC>'cZ2MoH!Vi8gpG;[A06.&--E&m[GO.=Tid[Y!%rUeg\\*k]\"qiUR=l9NEt>=gOK8'?BD<\\WS6C(1`h=7^t#=2Vb4[1<hRaZ8J^IBu+Io0-@1re0rM>m&!Jc)#0jd%=ejFIN5JaR_G7TX=_?rdQb>!7t;H%i@0SX`;nl\"TQfj4[5Xqs-!3(=AO$>\"))B*;u%NBs,-isa*Nampp<'0)W7)DDb-MCg7Oi.(\"i+^Zen!8qlBf,%pJ?$BFOY6;u,m=rses;Q6,%#`7LKJj/`9qH1M^>SbDte?eKf*\"1*GDZ[S;AN4'RTs4-kIo+>Tk4TK%(J=$Lp=rM_P&7:L'#Cq,MhS(:a12Hnm[D+WT?RGd`N1[1;UW*l=5Gnu^r\"&H#C]9Y`5\\&ojRe\\7UJ&F?s](Vb:`c(.TO.j+f0Xf<F(^^5k2'SOip\\0nZHhD-$4[>D1K:&;)rE6fu:>^P,hiFH5UU:!kOa\\WH%KFJE!?qGlo'g\"V$&Dn+jOMOFg&l#[o3:qfM;Flo);d(8%itWsC;:BrM`\"lt(b>X:B8YGnYm19C2=bM'YDnbGS+IRen#tO@>H.S5Z%'R_kM#qZf%!lNP@\\+ud%;VBs'sFVL]>YF^`i\\%YD.H$`l?3<q<e;A8_!VZc/)e<s&JD-p&.hb5DJjGDE9K!lfqgZEaCtks+m5n9*bG@TD%j;=S[GA^&L$;k1?$Mq]kq*bPQY4q\\^9DRdtn9T7+u[hn96(Y89MLs!.M-p^c,:]Gfeo1%J]Gr]bcFr-*MfFRJ&.rCs9CY=njjLc;BVru;J=ja*I%P`Hj/*WARrs(AX>aK*.L*\\79:c+Q?1s).5MM>`4lIEq0Yr>u4Bl0efTBlWXgs1C>dTDrD@n1XgI3;D*T>o`ds^F]rpf=rsKrm1UN*;mSO]/]SHs&^9=kPnm/']8!Qk.)3FJ$?\\s3%2MiKDA2K6MtP>cUN`aHuAu\\j`@L#rts_p$1\\$;#3U=Xrqg_c.GQ#g>5nC`p;?n:F(rd1bO[X\\;?\";@s7`;Ds%hg/HgUk.pqLP=s,$YLSF+]S;VnHi^OI!Y!_+bhH34)XrVu:G5f[L75>qO=TDt,FIkC[jc@KQuIr*`_kRDk;VqV/`S-+_jn/V)HM>H+So7,<eT99.tq![AE7_SeVi;T+HJ#lb'qa@\\SK`@tWJ1%Sskbh;N^Prir+8p]Yq5OCl/cS?1h,MrCo7,D>Da\"s6?AAI')2Rf)s2O*W$TO2r>0HseC]C\"jpIFrWWW\"!?ro`7TmnCJn@4;,9omR<hn(W:-IBA87?I-gpO#$I=^J?^CE$\"o@`n^TTR=t)0@Jd&(hsLGRr\\n2rA%XIqEprmMhkp<)3<)S@+6S2Om_@ZhG_C>\\[/[?)pT\"ns+8c)q^3rY$IdXN:hsA'[pTOjs?\\?T&n_NrRoYpWsi]l`.i4K,#J,C@m1H:*%[:919fdQUp\"$cbV'?)HtbjY-sro\\$/\"t%(pLZTiQ^R+CgmJjN<W@IlV>sOqh\\UW,Z\"olV)rs*dInGeIBIjaE/1uNl.>48e9CUEDHBJ'e6s0:AZ-\"qfhCD;h\\+5dRmIAj2VSi1n1B`?mkq>]RdjX9IRs3Kg+J%>S,)#r4b!F>>6B(LN9[B]-<0XgGCB;g5ti!An&i!o$%l>#O^6Z3F@@'&sLOd@?mhi%;[-3'$crI=Y@mu%\"q)DHb#Z.@\\Pg\\9&2kOni+6d:&K\"hh7`rM,[=T\"7F;#4S#U&\"d4Qs&S_UlhE]Jo\"R]_1]Nr>le_EYI1M;KmW5RN^ArXlbfN3.:[nBXbgcjr+!8V%NqN;lbU$6Os/>bnCAqk9s5EXrr*LYo1AO-n*bYIRiLaaI?RVPujSt@Jr<<35pVZ_qn'!f^s,q-^ir$PEj$*M36LFkRkPrX!hj@hKg&G8Ts(fXCqL.+^>B;%IIbjbGqtgp&*H]=$.ef4q59ei8I\"1W*^,,\\$eC%/lK5KH$*q/p>>FTX;?tBk1fE2DoVO[\\8\"oi39hUg(jR*9jq!Uk+%Qo1OiO8fr.gM_-T4u7S!Wr5f`hq_smrtLWC!(6^7%G\"b9p;_;`;JU+Pgs>d[=9I]\"r'*%/rQ=R^lm2.5'`3O_([\"9VchSu%s!tTl!9kPT;dU&#'E6aV%^47pir9:/hc,Y>!ut\\*bC:c\"YO[.\\rt?pW05>tQUWr`fW&)6V)Sg&R%3T5aV=8uRm/I?9hh:m?C;A3R8Yu\\[D84Ek5<0LaJ)NIr;=<n-lMl+SoB4F)kBICZ#C&PJMH15VfZjNKn\\;ZtWgliIIoQRtZ,T8Kqp,#peTEI#]/K6[[at26n\\;<!n=ef6X5)Tr-Vjs0GRPc$GhFVQ(gV&q`r?Wi^)-cmKr+?(7ftk6rW)]9]YEM,X4X'@rl;_@f7h9HSl]r_PrTthmJea,r3SK0b^VjGk?1k<(RV6(p2fN0?c2oM;t?Jt-EusZ7$fpLpj-_\"AcqY>.JM:KG5<,=WWrjCO4eukmSCC.ZL;]]\\Nbe?It$G&!@II?Ne.4GaSgGa2nRD2NWY7+c?m5/]T:`pg%-`hIr+fVW4kL[_:WgY$LguuB;n`M?uS93$3)C!rHLHO\\K8,fchaunC@Xt/r[75\"_L5eY&%6M9\\N^8Y!\"nri55JmmJ'R6[@fB/cqe8)FQj0MTRYf]:$K`CWpDWDmal%T$qf1N.N;Z3&cb5kE220hX6M\"?11&cC/(43A<bl'(5=Ln^Hgtt%EF\"t#aE\\ua)K_nd,hh_6]T)Z!'k/S0VIgVDBI.rp`%'r4A=THtl5g!D`ma`ZTIi.U78-@q\\<Oa-&ndFS9j#pRdhmNEKmk81#g%PRj)ZK>-EdnE\\s86rG&'3u;Y[W-Zp])Q$s,so7k'nJc+-?aer877aWrZMss!Zn()gd#Fqnmp's2V_62h^A?T95FjqrW/(3X3[t!=h.nUWi[F\\N^-9_#)>LrpN;'R/]%Ps2_GC?f[e#bP.?MI__GDSXn0rq$dA88hgjhMui9+TW/)6L!Kj[Y$'oe.e:>U%@I$/s\"O@Ho)0Z-l2)u=YG.$XX>>FfB7fg>\",r?ACWZN$l9N/YVf9DfJ,NOkfR>4:(\\7O`(JN*J=$XM%lohk^lN\"L40UrC7:BO''s,Vd36ZIS^)A':Sp\"WXH(\\p;eHgAuNfD5E\\:=/`::bf`ho`F!,?GMJ?h$Xqk!W%TS7`PI*E.8;oO)$us>!VO21X=]FjhK%>=4]hFH,!P?s)PEZ^Ok/M9YGsG02Ppq0\\ltIV?)>@T=NiM\".EnSHMr`gh[@6]s1AmAYI<o':rWJoi`n`0(JN$V0Cs_=c3A-oN\\f84b4C*r^3?=UEQHaam8)]TT`P/J?\\/Khc26BohtL4!0u/Ls%ohp\"TGX>Q%rfm//WYG^\")ra9r,8V:`p:-`Ii\\7mr`=Grg@7DiqpV'RH-QZ]jOAU-\"W[\\-I$OR0A1p1o&#a5oI;2$E&%T\"$T*#%^BS,i'2rC7Er<iR7CS;pO^JnioM#BNH'`Y@gn#q6Y!;7Jh(M<gh]`=Wd@'q@913Y$K!ug<c-Hc5MgAVT?pA%6sj)\")o/H2-QIp;mWA,d3*lf21GrYI*Dq^Wcn^jZ:%2n2&i32.3SmKp8kJCQc4m0!.T!pOL478A,[]O+nBHak0XI747$q<saC*TXs_p-1F[plVmH<lt);-t@c4no)ZW!7;<Zk6!+A.0\"_BOT-n[J/g-X!U#mNq:o'LYN5\\'I\"8fA^7I?7X6TR4+9mAATrp][^fDN'p&SV@&E81<+(/bg1B76\\rAiXlq/>BoC3AF[s(^mBf^!>Hr;=,e^;%P6+pRi0[s+Wh.M!Bg!N]J?@5@lSf(jW+^tS:M\\DQ*8fCD/)!Ic+5D9gHRe],uaMg415ZY+p^[4`W[N-p-pklY1%qZ(b%!S)=bjp.un%]iFn^Rk='^>I!0h$=_pNP7V1rrX09[K!Kl5Os1DZfYWmHY6tPF1u[Glh^#)44:`!5!X>iYA1j&C;EgC5BD:6NVbHe)uR0cJ,3?[iP3P4SbQfE()h_dY,^luI=Te45!TVXoD8Si9b2R5s3-,+oC!uFJ*(c9L%hb;hqrWAGMq?/n@t.\\O4=*sn!sd0pmd3POMBAqHd%6,p#,cBnNM]aGjjelp@>_3g&?E?p8@K=NW\"9N5L4^aC&8Fm_\"RYQJ@f&.TQgBZV[mVuHN*)J^M=hqE5.P&hi6=g9`@,^^N-c<H*1MjI5U%pQ/hj++5eEd#=ur=/iVB>?6/7\"s)#:'<Y(/(drTh`rI$]]h[RR'jnDs!s-W3*EBh_A51=.j@kJ7#@)N<9@f+pT!<)<n=>lJC!Meh-\"8M84h\"L1TnG3'XkK!U.F^k6+F`$R:rV#W@FPs?PrH2snIj6&nW0n/MDZ6R\"_5R,n>4./erOW)pH,#I.T7t%4>2*E?kD*A.1\"Tddrqh'5$!+1[YFQ2ChH:nm[s[oM3l([>kJ#mM-P-,8s('l&nNUX_m61I4IoX0GO,o@OmfV=ZC;#(UI\"8C\\[=GW5TP<uSY5tEg!=%Y72;XDKHQW!!r`aG-)Yj</m>mk'A^0t[V6u?H:$#'pjn\\uV).?81!3=!:dJ*]/gAD6Nj*\\=5NVUKIO7PSto*`k<&8-;dT0N#FmAsUKn+?^1qb?2RjPE-b,HPKH:tE9uepsai5K`l:I,7s\"+,p$=n\"?*9YKlhS]fmY/L\\Mt;?+6>RbQe.*&Js7Bo)[#*JrZTi^q.GaX3Ua5L&D.DT>u;Bs,CiE/E[i7o@*S``EZb`!$6WtZ*F#2?NKt`btTo7!8KMG\"BB&fYDj'sXBNEDr\"!g3_Yp@Ef<N)'O'eLG&*3Z$qtn<J&*<OqNGl!dT5Q@#N1bB:YKC#,G!0g?Z\\!tP#^q6K3?R1-0AJ3tJ)'co\\,H<>rN>%-D>=(qfB\\V-'aN*EOSeg3OS/)Dr#.8f&(%5V[s6d@pFC[+!WKS\"qsCpX=O5^iJ&Qkd#`&T4S?V<pH\"NEk(Du]D<`9*$KE$5PGBmQ5rD*Ihr;PJt?V6AtA=g9oojPU\"'kSGYcOIS[k5p)'_Xlc;.HnRgH3%2h^I+J4id<un)V+_JH[J20rtY5$hm2.3Kea,lB*=`+cO=MI+/#rDpd\"a!bQm@TmMjrbc0qS$hW4[=B5_^Sm8*':\\,H;!pA5dQ*XDI]J^)LMRXu;KPQ+@fhqI3sr3pJ?Z_fI,BVn9oT+ChtbtuC\\(KMMpej3(sRKe^B$bGMNUO5VaI_TkD?gldrZ2IC+ra;?/qu'5$NrqN-L,>800Rb&+a8bUts..a7)K7pnhk+?S;tfjM0n7\"-k<>NXnAbQ)?dNfi3?`*?0HU4;_>QRn+8,N#o^Xkrq*Wr@n3<QB^@SsMV@Vke3sY32Rl>9HXOO;rpBRMaA+d@h(]X)Rq%Duh\\[F_jq[WY4o6m@J(Mcn@pn<0XCR\"es%Q32An&>*R3Z!m-I[E3t230!DqH%Ic^R\"`Xrh00bk'gL(TA7cA_!eJVq3o8\"$+YMc^\\@SnHIf;Yi=E_BA_Z)_O:-S7KtIcj/#t>=W!R]+^fM1?e,[`&[C5i(p\"J\\,#Q!V4[Z?WjJ\"-$:NGO'H#.QD&RHs=)qd3UrMqIZ.k54X-F2*&E(U1<XWUhWdT:hkYa#/2H]GaVA\",\\%_3Ko2I)6YQukC$^mcgh*7mJah:n(jD%NI#d^C]&$irSFkB@Wak[DP-@a07G)U\\AA!T?8Y\"8'1>W]3_/i5_H.P4BgB6_@.N42J$*lYYIS=bfsl:a\"oj5PF9?ToS*\\\\/n*bDEmE*KEH$NcSgM>@8.+`rC4oo`>J)L=C^Okp.(r2[_*1@aE4#\\_E03n'TY@m0+\\NO.)ZM]:4\\=_\"F9REBqLTcC9\"DiNmb[9>CHVUc\"qis5\"7CfT,1M`)1i`SIgeUX9ArgA-fo\"Uj6<uJ>31ZJKhs$Ps><FURp*LKp8?l@`qaoOnTn+H4_YkJInF+4te^=W'?BCrcJonI8[2mc@$E@CDX0@kN2h]Nj,jph,qYlE81!)j!:Fb(598E,-$%b0U7\"7(%WmRM;D1!\\tRhOVi\\aSV@>T+plu\\PIK7,MlMW2sYjqos\\sj2geD7_:I2gg<T1.=p*VP%5<,2C^m?*\"8q<gL3!D>r`@C-#\\\\`RTQZF.Ap`WhK_Ma!?H(JSZ1mLo@G:YXVYAK[o=I$^)#*\\C+0+kgdQ6.<ggog`W<)2lG['kGcjXoj!BM;6WXU<M!fA5\\KP-?LMD(X1^o%F/H?j05VoAq#qNsFY%s#CjpceY!RecgmmY>Ct]A,Vlqg7bPc62i9j>u0H@.skQQ$tud%tFj`cOt23\"#4/ue,Zrfi7Pe**Umj\\T&'Q^qZs1k66pGEb2`Bni2<3JP8UiVON[U0=K9OB\\s_A<mU$jFIGE^95#?15eg>)2quAm$l,ktY^jE4t/12\"U!$)I6H[8j>)Gm=8-JY&adq;L^HZf:2Spn=EInl`?Ds-TPE50%m_,roZLJl1k,JVQS@J'1j?S?JM[\"&@r%mV[rmnW5c'`5-,/9,?Rg,%fl%A^uGZSETCnH0sr&CcA]:WsBd^<>\\#lifB+.IY1P[pR=m5L\"GFci)02]<Cf'[%Bk.qlh<hrGglpn%[I76.MHIXni1NIK<(D;K;i$GT\\pmOJ)b_rudHIWURW?e5!KPl%NKR]GHV.P8+<_\\WF8sG]fTbjSG8@dt\"G-WZIj\\fq0_UM7`Gs:csi>\"*RE^<\"j&B!O_Ga/b7bn+7@nV52SLWkAob>q\\8JqB(pt*HXn2.n/_$9o)-`1ks4nIl!E=qZ\"F@4>d-,J&.eR0'C0nY\\&YmBX^Futb5FkihpB[[n\\00\"O*>c.31j.BP2Pl>76HF:P&#HoKBa0u%4Jqhll4II5uejXo7AG5B]0=IIitR`Aonrq2\"#^,rk@@SfC1q*#>L6Obrr^K09=r8ImlQ\\bEjk2SfE%s1YQOCp'f?ZlU;f_@+>K^?;T_d_S1Q(7M+r'Qm\\D(n)N42F5Q0H>;LPop,iIo^2FOSRHJYcn>]_*ecbC%@IC<%eD=V6+/C^FV9Y\"3TVkR._\\\\-R)=tiPF`k+n3T!?>DdHArreN\\^]CU?K2W*0!n)X<:ljhaaInc!q5/,R\"Xq/6n9Af9InXZ_*+NYFud=GuUd.%EWrIP&p+0NXCbk$0tI5o5Bjh&?U&*NmLhjE.ArI)i[WVR[dp<RtikDJ;VX:M>A_NY^qk;%C4!EgcY`rq,,G^Y/GO&(l%(G(jGq:t_`0,E`?g3PF8D0oXC^[p.Bj,_jjCO+44fd\"N0^%DB>j'R927Ef_]1s]h-q#[9[@)W7=G\"b`1\"79TO(4)'EK?WAi>I/PJ3X,4?2WhYn0:hmpmbLt>U1\\S&D#TF$q'*lZD\"3b#^G[e+!V!e502SDG!A186J^5u_lPlYn+/EAliO]uN4+!A^rd>:FrL=Dkm0d-Zmtc4lBD&LRB7qFUJY-X.>ZtdLeGB;R*N7G=W#g2jT]-nYqKn]H6f`O?531cgSM\"`,29*-&pB9Y.`n,Q\\`HUV$Hp#\\4T:tcHl'$WNi2I=P4TlfHnDjmK*=-=E1j@mP%4ZEZ,/-BaO0D,MI!33NhRg3[^;YGC7`T.oqngs_?66Lu8(I:bjtgaKo`a+hJ_3=$f7AHJi73Gu9o/\"aGBQd\"rI:(M`]b[AicT/)KC_*f^ON?^Gk>>@$W5rlj8;hmo9oK7&@=)eXHg(\\n5];dZ@=j6\"/QdCHJnB(Z@%=Y3hohnXS0l7n2SGTN*a.rhE.8%q=oR9:0p`NH^jd!omLmig#b)2@/0j`chUb8m1e$#1/CHL8]($-I\"\"@\\%rsNN0[DGG'tp;44thigVZGZ3l8_[QDP+Jca9?TO+trGGesndV<1WPK3oGu*KMOieoY?eD8C`?iGm(lGoUle=[JJUehO_LHj8GqhhoBuFcA,r\"cfbF46TE7$[\\To*[os#Mc3WM<cRAgP[<ej[^nV!4Hsl0SW&5_!Q1p*qn;gi\"41.2;pS*riir'VJs'L9SQ1sW\"3epK9&/V;@0K4^r@%@Xs5\\Yd651'6X=pt7ScqG,D@Y\\Qai;*8mHc>o0ZYuaFa%POm\"nS=j,Ua\\cg\"rU6D<_,p'o@6fW#JY7^q&YP;\"6ij-d[<nXToU@+N6iAasXRf(ZJ]oo=^1U`tmiL:=%+1\\VKdRSFOb7B++gC\"$>8Eem\\;e55\\KY\"/;-DHigDR[SJ$Q5ktSl*a&D-Q6rEn6=YF_oCX9A5(W;Q50bC]Vk1RP\\rYCTgWY#a3+1u9Z1b/'E21^6\\eD>7TaO%9./e`omP*0]E&>BE5:#J\\NDB98\\rZ/<Q8^i(`PZuSRh$V*6?->cH?%5O_>=JRqeP=WA&Kd<@#$^mFUhV&I\"FC2-t<CN4#Hng<)#&gTiN6:)Nft^Y\"QL\\E;hW.H\"a/Afu).N1@H(o^_9j07/^hHHb2`Tg_`?=%W24g9+rfR#9JlokX63#,]MSt]CP?aSGuc5T!#a,C9O#<q;MSLShWB-[G]E[!YlrEq1<DAL!Toh'/&Q-TqVom)\\e<JF<ZNN+6$NA20okXj0MYo:N?C1Rf*!Y42q#2.lW'.(cY`XD*;Bo+LL'0T`lB=$]rOu/aMrs;4f4q>Sm#43GoEZPaZP+eHDiZ$<eOI7OVAB;3+WhqK5OR]5DRng36d@jmS)Q%rEOQ0@+=\\S<oierRS0>o8GPXdK8L8^bP>/quSmZR.T=q6,j7d-J[GhQbY$^2dC&k+PpCgg-F#i`4>T@M6B+Vd#SL'RlE?H0\"HG)mCJAEprrO\"\\;&&`>&MHk(]\".!G\\_8iqt(`k#hZ^)04*\"Q;K)ZI6c@K#k.ku9$/Z(aG`6?'@8hk4-sT?Y62D)FIuntbBSQN$r;DleosaM\"XpqPk3a@.g\\Lu33;>#9@#NC$k4G2UJdXt8n#FJ!f:!iild[,/8!PJ;%\\0i=AVZ:(n1nodZKMDfT&93Dt))nG;^6O1hVtEJ@-94g`^S>*_iqfFdF]H2C^'B%3bgOIQCf(]2\"oJ!%7OGL'YdI&J0q<\"^40!]*1LiV2b5[$Bi9]pi^+I&\"cj@Pk`>,>T.Et[I)peKCpYQd:r:.he^C&mHpeU'\"SiC`)S?J\\sIc`\\DYrnCn\"#Su'65-\"\"3;4!UNQ!FniQnQG:<qX^?fqSgjZ_i_5>OFdF:QkJ`T]VcoMb:k5LF6KYF+Va`b5B:rp[g``Tu-Z$bp+CkQKk0Lar`M'!LMCGi\"KGr^ch-?iECeo:Q',gh&5W$jM@#?n`E+#(sa\"0Gk3&K>CqL(^pV$_-er6$jM@#?n`E+#(sa\"0Gk3&K>CqL(^pV$_-er6$jM@#kRdb'qf49m"
+            token outputs:mdl:displacement.connect = </World/Looks/OmniSurface/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </World/Looks/OmniSurface/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </World/Looks/OmniSurface/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniSurface.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniSurface"
+                color3f inputs:diffuse_reflection_color = (0.17292422, 0.6686242, 0.83168316) (
+                    customData = {
+                        float3 default = (1, 1, 1)
+                    }
+                    displayGroup = "Base"
+                    displayName = "Color"
+                    hidden = false
+                )
+                asset inputs:diffuse_reflection_color_image = @./rgb_color_wheel.png@ (
+                    colorSpace = "auto"
+                    customData = {
+                        asset default = @@
+                    }
+                    displayGroup = "Base"
+                    displayName = "Color Image"
+                    hidden = false
+                )
+                token outputs:out
+            }
+        }
+    }
+
+    def Cube "Cube_01"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        rel material:binding = </World/Looks/GreenPSmaterial> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        bool primvars:doNotCastShadows = 0
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (174.33755957405668, 105.98440983785454, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "BlueMdlCube"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        rel material:binding = </World/Looks/Aluminum_Anodized_Blue> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        bool primvars:doNotCastShadows = 0
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 105.98440983785454, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Cube "TexCube"
+    {
+        float3[] extent = [(-50, -50, -50), (50, 50, 50)]
+        rel material:binding = </World/Looks/PreviewSurfaceTexture> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        double size = 100
+        double3 xformOp:rotateXYZ = (0, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 59.674472384115596, 161.71340973791158)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+
+def Xform "Environment"
+{
+    double3 xformOp:rotateXYZ = (0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+
+    def DomeLight "Sky" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float colorTemperature = 6250
+        bool enableColorTemperature = 1
+        float exposure = 9
+        float intensity = 1
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        asset texture:file = @https://omniverse-content-production.s3.us-west-2.amazonaws.com/Assets/Scenes/Templates/Default/SubUSDs/textures/CarLight_512x256.hdr@
+        token texture:format = "latlong"
+        token visibility = "inherited"
+        double3 xformOp:rotateXYZ = (-90, 0, 0)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 305, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def DistantLight "DistantLight" (
+        prepend apiSchemas = ["ShapingAPI"]
+    )
+    {
+        float angle = 2.5
+        float colorTemperature = 7250
+        bool enableColorTemperature = 1
+        float exposure = 10
+        float intensity = 1
+        float shaping:cone:angle = 180
+        float shaping:cone:softness
+        float shaping:focus
+        color3f shaping:focusTint
+        asset shaping:ies:file
+        token visibility = "inherited"
+        double3 xformOp:rotateXYZ = (-90, 0, -15)
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 305, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+
+    def Scope "Looks"
+    {
+        def Material "Grid"
+        {
+            token outputs:mdl:displacement.connect = </Environment/Looks/Grid/Shader.outputs:out>
+            token outputs:mdl:surface.connect = </Environment/Looks/Grid/Shader.outputs:out>
+            token outputs:mdl:volume.connect = </Environment/Looks/Grid/Shader.outputs:out>
+
+            def Shader "Shader"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniPBR.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniPBR"
+                float inputs:albedo_add = 0 (
+                    customData = {
+                        float default = 0
+                        dictionary soft_range = {
+                            float max = 1
+                            float min = -1
+                        }
+                    }
+                    displayGroup = "Albedo"
+                    displayName = "Albedo Add"
+                    doc = "Adds a constant value to the diffuse color "
+                    hidden = false
+                )
+                float inputs:albedo_brightness = 0.52 (
+                    customData = {
+                        float default = 1
+                        dictionary soft_range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    displayGroup = "Albedo"
+                    displayName = "Albedo Brightness"
+                    doc = "Multiplier for the diffuse color "
+                    hidden = false
+                )
+                float inputs:albedo_desaturation = 1 (
+                    customData = {
+                        float default = 0
+                        dictionary soft_range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    displayGroup = "Albedo"
+                    displayName = "Albedo Desaturation"
+                    doc = "Desaturates the diffuse color"
+                    hidden = false
+                )
+                asset inputs:diffuse_texture = @https://omniverse-content-production.s3.us-west-2.amazonaws.com/Assets/Scenes/Templates/Default/SubUSDs/textures/ov_uv_grids_basecolor_1024.png@ (
+                    colorSpace = "sRGB"
+                    customData = {
+                        asset default = @@
+                    }
+                    displayGroup = "Albedo"
+                    displayName = "Albedo Map"
+                    hidden = false
+                )
+                bool inputs:project_uvw = 0 (
+                    customData = {
+                        bool default = 0
+                    }
+                    displayGroup = "UVW Coordinates"
+                    displayName = "Enable Project UVW Coordinates"
+                    doc = "When enabled, UV coordinates will be generated by projecting them from a coordinate system"
+                    hidden = false
+                )
+                float inputs:reflection_roughness_constant = 0.333 (
+                    customData = {
+                        float default = 0.5
+                        dictionary range = {
+                            float max = 1
+                            float min = 0
+                        }
+                    }
+                    displayGroup = "Reflectivity"
+                    displayName = "Roughness Amount"
+                    doc = "Higher roughness values lead to more blurry reflections"
+                    hidden = false
+                )
+                float inputs:texture_rotate = 0 (
+                    customData = {
+                        float default = 0
+                    }
+                    displayGroup = "UVW Coordinates"
+                    displayName = "Texture Rotate"
+                    doc = "Rotates angle of texture in degrees."
+                    hidden = false
+                )
+                float2 inputs:texture_scale = (7, 7) (
+                    customData = {
+                        float2 default = (1, 1)
+                    }
+                    displayGroup = "UVW Coordinates"
+                    displayName = "Texture Scale"
+                    doc = "Larger number increases size of texture."
+                    hidden = false
+                )
+                float2 inputs:texture_translate = (0, 0) (
+                    customData = {
+                        float2 default = (0, 0)
+                    }
+                    displayGroup = "UVW Coordinates"
+                    displayName = "Texture Translate"
+                    doc = "Controls position of texture."
+                    hidden = false
+                )
+                bool inputs:world_or_object = 0 (
+                    customData = {
+                        bool default = 0
+                    }
+                    displayGroup = "UVW Coordinates"
+                    displayName = "Enable World Space"
+                    doc = "When enabled, uses world space for projection, otherwise object space is used"
+                    hidden = false
+                )
+                token outputs:out
+            }
+        }
+    }
+
+    def Mesh "Plane"
+    {
+        int[] faceVertexCounts = [4]
+        int[] faceVertexIndices = [0, 1, 3, 2]
+        rel material:binding = </Environment/Looks/Grid> (
+            bindMaterialAs = "weakerThanDescendants"
+        )
+        normal3f[] normals = [(0, 0, 1), (0, 0, 1), (0, 0, 1), (0, 0, 1)] (
+            interpolation = "faceVarying"
+        )
+        point3f[] points = [(-50, -50, 0), (50, -50, 0), (-50, 50, 0), (50, 50, 0)]
+        float2[] primvars:st = [(0, 0), (1, 0), (1, 1), (0, 1)] (
+            interpolation = "faceVarying"
+        )
+        uniform token subdivisionScheme = "none"
+        double3 xformOp:rotateXYZ = (0, -90, -90)
+        double3 xformOp:scale = (14, 14, 14)
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+    }
+}
+

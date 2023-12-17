@@ -1,0 +1,65 @@
+#usda 1.0
+(
+   
+)
+
+class Xform "_class_Tree"
+{
+    double theight = 1.23
+    def Cylinder "Trunk"
+    {
+        # double height = </_class_Tree/theight>
+        double height = 1
+        double radius = 0.1
+        
+        double3 xformOp:rotateXYZ = (90, 0, 0)       
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 0.5, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale" ]
+        
+        color3f[] primvars:displayColor = [(0.125, 0.1, 0.075)]
+    }
+
+    def Sphere "Leaves"
+    {
+        # double height = </_class_Tree/theight>
+        double height = 1
+        double radius = 0.5
+        double3 xformOp:rotateXYZ = (90, 0, 0)       
+        double3 xformOp:scale = (1, 1, 1)
+        double3 xformOp:translate = (0, 1, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale" ]
+        color3f[] primvars:displayColor = [(0, 1, 0)]
+    }
+}
+
+def "TreeA" (
+    inherits = </_class_Tree>
+)
+{
+        double3 xformOp:translate = (0, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate" ]
+}
+
+def "TreeB" (
+    inherits = </_class_Tree>
+)
+{
+        double3 xformOp:translate = (1, 0, 0)
+        uniform token[] xformOpOrder = ["xformOp:translate" ]
+}
+
+def "TreeC" (
+    inherits = </_class_Tree>
+)
+{
+        double3 xformOp:translate = (0, 0, 1)
+        uniform token[] xformOpOrder = ["xformOp:translate" ]
+        over "Leaves"
+        {
+            double radius = 0.41
+            color3f[] primvars:displayColor = [(1, 1, 0)]
+        }
+}
+
+

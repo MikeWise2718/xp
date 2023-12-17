@@ -1,0 +1,50 @@
+#usda 1.0
+(
+   
+)
+
+def "Patch" 
+{
+    def "TreeA" (
+        references = @./TreeLayer.usda@</_class_Tree>
+    )
+    {
+            double3 xformOp:translate = (0, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate" ]
+            over "Leaves"
+            {
+                double radius = 0.40
+                color3f[] primvars:displayColor = [(1, 0.5, 0)]
+            }        
+    }
+
+    def "TreeB" (
+        references = @./TreeLayer.usda@</_class_Tree>
+    )
+    {
+            double3 xformOp:translate = (1, 0, 0)
+            uniform token[] xformOpOrder = ["xformOp:translate" ]
+
+    }
+
+    def "TreeC" (
+        references = @./TreeLayer.usda@</_class_Tree>
+    )
+    {
+            double3 xformOp:translate = (0, 0, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate" ]
+    }
+    def "TreeD" (
+        references = @./TreeLayer.usda@</_class_Tree>
+    )
+    {
+            double3 xformOp:translate = (1, 0, 1)
+            uniform token[] xformOpOrder = ["xformOp:translate" ]
+            over "Leaves"
+            {
+                double radius = 0.41
+                color3f[] primvars:displayColor = [(1, 1, 0)]
+            }
+    }
+}
+
